@@ -3,6 +3,9 @@ const app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+var rootRouter = require('./router/rootRouter');
+var authRouter = require('./router/authRouter');
+
 // 세션 모듈
 var session = require('express-session');
 var MySqlStore = require('express-mysql-session')(session);
@@ -24,5 +27,8 @@ app.use(session({
 // body-parser
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/', rootRouter);
+app.use('/auth', authRouter);
 
 app.listen(3000, () => console.log('3000!'));
