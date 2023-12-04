@@ -1,0 +1,28 @@
+<table class="table table-bordered ">
+
+    <%
+    if(list.length > 0){
+        var i = 0;
+        while(i < list.length){%>
+            <tr>
+                <td><img src="<%=list[i].image%>" style="width:100px;height:100px; "></td>
+                <td><%=list[i].name%></td>
+                <td>가격: <%=list[i].price%></td>
+                <td>브랜드: <%=list[i].brand%></td> 
+                <%
+                if(VU === 'u'){%>
+                    <td><a href="/merchandise/update/<%=list[i].mer_id%>">수정</a></td>
+                    <td><a href="/merchandise/delete/<%=list[i].mer_id%>" onclick='if(confirm("정말로 삭제하시겠습니까?")==false){ return false }'>삭제</a></td>
+                <%}%>
+            </tr>
+            <%
+            i++;
+        }
+    }
+    else {%>
+        <tr>
+            <td>자료 없음</td>
+        </tr>
+    <%}%>
+
+</table>

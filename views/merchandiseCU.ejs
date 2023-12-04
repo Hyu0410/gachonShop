@@ -1,0 +1,117 @@
+<div class="container">	
+    <script>
+
+        function displayFileName(){
+            var fileName = $("#file").val();
+            $(".upload-name").val(fileName);
+        }
+    </script>
+   <%
+   if(CU === 'c'){%>
+	<h2>상품 입력</h2>
+	<form action="/merchandise/create_process" method="post" enctype="multipart/form-data">
+		<div class="mb-3">
+			<label class="form-label" for="id">카테고리</label> 
+			<select name="category" id="id">
+			<%
+			var i = 0;
+			while(i < list.length){%>
+				<option value="<%=list[i].sub_id%>"><%=list[i].sub_name%></option>
+				<%
+				i++;
+			}%>
+            </select>
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">제품명</label> 
+			<input class="form-control" type="text" name="name" placeholder="사과" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">가격</label> 
+			<input class="form-control" type="text" name="price" placeholder="500" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">재고</label> 
+			<input class="form-control" type="text" name="stock" placeholder="0" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">브랜드</label> 
+			<input class="form-control" type="text" name="brand" placeholder="장수사과" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">공급자</label> 
+			<input class="form-control" type="text" name="supplier" placeholder="장수사과원" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">할인여부</label> 
+			<input class="form-control" type="text" name="sale_yn" placeholder="Y/N" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">할인가격</label> 
+			<input class="form-control" type="text" name="sale_price" placeholder="0" style="width:300px;" />
+		</div>
+
+        <div class="mb-3">
+            <input class="upload-name" value="" name = "image" placeholder="이미지파일">
+            <input type="file" id="file" name="uploadFile" onchange="displayFileName()">
+        </div>
+        <button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+  </form>
+   <%}
+   else{%>
+	<h2>상품 수정</h2>
+	<form action="/merchandise/update_process" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="mer_id" value="<%=merchandise[0].mer_id%>">
+		<div class="mb-3">
+			<label class="form-label" for="id">카테고리</label> 
+			<select name="category" id="id">
+			<%
+			var i = 0;
+			while(i < list.length){
+				var selected = '';
+				if(list[i].sub_id === merchandise[0].category){
+					selected = 'selected';
+				}%>
+				<option value="<%=list[i].sub_id%>" <%= selected %> ><%=list[i].sub_name%></option>
+				<%
+				i++;
+			}%>
+            </select>
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">제품명</label> 
+			<input class="form-control" type="text" name="name" placeholder="사과" value="<%=merchandise[0].name%>" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">가격</label> 
+			<input class="form-control" type="text" name="price" placeholder="500" value="<%=merchandise[0].price%>" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">재고</label> 
+			<input class="form-control" type="text" name="stock" placeholder="0" value="<%=merchandise[0].stock%>" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">브랜드</label> 
+			<input class="form-control" type="text" name="brand" placeholder="장수사과" value="<%=merchandise[0].brand%>" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">공급자</label> 
+			<input class="form-control" type="text" name="supplier" placeholder="장수사과원" value="<%=merchandise[0].supplier%>" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">할인여부</label> 
+			<input class="form-control" type="text" name="sale_yn" placeholder="Y/N" value="<%=merchandise[0].sale_yn%>" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">할인가격</label> 
+			<input class="form-control" type="text" name="sale_price" placeholder="0" value="<%=merchandise[0].sale_price%>" style="width:300px;" />
+		</div>
+
+        <div class="mb-3">
+            <input class="upload-name" value="<%=merchandise[0].image%>" name = "image" placeholder="이미지파일">
+            <input type="file" id="file" name="uploadFile" onchange="displayFileName()">
+        </div>
+        <button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+  </form>
+   <%}%>
+</div>

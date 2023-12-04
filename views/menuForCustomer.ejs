@@ -63,7 +63,7 @@
             </a>
             <ul class="dropdown-menu">
               <%
-              if(logined){%>
+              if(logined === 'YES'){%>
                 <li><a class="dropdown-item" href="/auth/logout_process">로그아웃</a></li>
               <%}
               else {%>
@@ -71,11 +71,6 @@
                 <li><a class="dropdown-item" href="#">회원가입</a></li>
                 <li><a class="dropdown-item" href="#">아이디/비번찾기</a></li>
               <%}%>
-              
-              <!-- <li><a class="dropdown-item" href="/auth/login">로그인</a></li>
-            
-              <li><a class="dropdown-item" href="#">회원가입</a></li>
-              <li><a class="dropdown-item" href="#">아이디/비번찾기</a></li> -->
             </ul>
           </li>
         </ul>
