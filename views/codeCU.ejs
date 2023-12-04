@@ -1,0 +1,65 @@
+<div class="container">	
+    <%
+    if(CU === 'c'){%>
+        <h2>코드 입력</h2>
+	<form action="/code/create_process" method="post" >
+		<div class="mb-3">
+			<label class="form-label" for="id">대분류</label> 
+			<input class="form-control" type="text" name="main_id" placeholder="0000" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">대분류명</label> 
+			<input class="form-control" type="text" name="main_name" placeholder="상품" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">소분류</label> 
+			<input class="form-control" type="text" name="sub_id" placeholder="0001" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">소분류명</label> 
+			<input class="form-control" type="text" name="sub_name" placeholder="의류" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">시작일</label> 
+			<input class="form-control" type="text" name="start" id="start" placeholder="YYYYMMDD" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">종료일</label> 
+			<input class="form-control" type="text" name="end" id="end" placeholder="YYYYMMDD" style="width:300px;" />
+		</div>
+        <button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+  </form>
+    <%}
+    else{%>
+        <h2>코드 수정</h2>
+	<form action="/code/update_process" method="post" >
+        <input type="hidden" name="mainId" value="<%=code[0].main_id%>">
+        <input type="hidden" name="subId" value="<%=code[0].sub_id%>">
+		<div class="mb-3">
+			<label class="form-label" for="id">대분류</label> 
+			<input class="form-control" type="text" name="main_id" placeholder="0000" value="<%=code[0].main_id%>" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">대분류명</label> 
+			<input class="form-control" type="text" name="main_name" placeholder="상품" value="<%=code[0].main_name%>" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">소분류</label> 
+			<input class="form-control" type="text" name="sub_id" placeholder="0001" value="<%=code[0].sub_id%>" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">소분류명</label> 
+			<input class="form-control" type="text" name="sub_name" placeholder="의류" value="<%=code[0].sub_name%>" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">시작일</label> 
+			<input class="form-control" type="text" name="start" placeholder="YYYYMMDD" value="<%=code[0].start%>" id="start" style="width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">종료일</label> 
+			<input class="form-control" type="text" name="end" placeholder="YYYYMMDD" value="<%=code[0].end%>" id="end" style="width:300px;" />
+		</div>
+        <button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+  </form>
+    <%}%>
+</div>
