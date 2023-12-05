@@ -15,4 +15,12 @@ router.get('/logout_process', (req, res) => {
     auth.logout_process(req, res);
 })
 
+router.get('/signUp', (req, res) => {
+    auth.signUp(req, res);
+})
+
+router.post('/signUp_process', (req, res) => {
+    auth.signUp_process(req, res);
+})
+
 module.exports = router;
