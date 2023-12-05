@@ -1,0 +1,38 @@
+<table class="table table-bordered border-primary">
+    <thead>
+        <td>아이디</td>
+        <td>비밀번호</td>
+        <td>이름</td>
+        <td>주소</td>
+        <td>전화번호</td>
+        <td>생년월일</td>
+        <td>클래스</td>
+        <td>포인트</td>
+        <%
+        if(VU === 'u'){%>
+            <td colspan="2"></td>
+        <%}%>
+    </thead>
+
+    <%
+    var i = 0;
+    while(i < list.length){%>
+        <tr>
+            <td><%=list[i].loginid%></td>
+            <td><%=list[i].password%></td>
+            <td><%=list[i].name%></td>
+            <td><%=list[i].address%></td>
+            <td><%=list[i].tel%></td>
+            <td><%=list[i].birth%></td>
+            <td><%=list[i].class%></td>
+            <td><%=list[i].point%></td>
+            <%
+            if(VU === 'u'){%>
+                <td><a href="/person/update/<%=list[i].loginid%>">수정</a></td>
+                <td><a href="/person/delete/<%=list[i].loginid%>" onclick='if(confirm("정말로 삭제하시겠습니까?")==false){ return false }'>삭제</a></td>
+            <%}%>
+        </tr>
+        <%
+        i++;
+    }%>
+</table>

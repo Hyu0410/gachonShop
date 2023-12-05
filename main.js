@@ -7,6 +7,7 @@ var rootRouter = require('./router/rootRouter');
 var authRouter = require('./router/authRouter');
 var merchandiseRouter = require('./router/merchandiseRouter');
 var codeRouter = require('./router/codeRouter');
+var personRouter = require('./router/personRouter');
 
 // 세션 모듈
 var session = require('express-session');
@@ -37,5 +38,6 @@ app.use('/', rootRouter);
 app.use('/auth', authRouter);
 app.use('/merchandise', merchandiseRouter);
 app.use('/code', codeRouter);
+app.use('/person', personRouter);
 
 app.listen(3000, () => console.log('3000!'));
