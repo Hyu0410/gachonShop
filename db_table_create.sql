@@ -33,3 +33,25 @@ sale_yn varchar(1),
 sale_price int,
 PRIMARY KEY(mer_id)
 );
+
+create table boardtype (
+type_id int NOT NULL auto_increment,
+title varchar(200) not null,
+description varchar(400) ,
+write_YN varchar(1) not null,
+re_YN varchar(1) not null,
+numPerPage int not null,
+PRIMARY KEY(type_id)
+);
+
+create table board (
+board_id int NOT NULL auto_increment,
+type_id int ,
+p_id int, 
+loginid varchar(10) NOT NULL,
+password varchar(20) NOT NULL,
+title varchar(200) ,
+date varchar(30) NOT NULL,
+content text,
+PRIMARY KEY(board_id)
+);

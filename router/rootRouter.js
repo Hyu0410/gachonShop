@@ -3,8 +3,8 @@ var router = express.Router();
 
 var shop = require('../lib/shop');
 
-router.get('/', (req, res) => {
-    shop.home(req, res);
+router.get('/all', (req, res) => {
+    shop.all(req, res);
 })
 
 module.exports = router;
